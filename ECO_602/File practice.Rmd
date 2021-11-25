@@ -1,0 +1,31 @@
+---
+title: "Data file practice"
+author: "Keith Allison"
+date: "9/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+```
+
+```{r}
+catrate <- read.csv(here("data", "catrate.csv"))
+rope <- read.csv(here("data", "rope.csv"))
+delomys <- read.csv(here("data", "delomys.csv"))
+```
+```{r}
+rope
+```
+```{r}
+
+png(filename = here("ropehistogram.png"), width = 800, height = 600)
+hist(rope$p.strength, main = "Histogram of rope p.strength Keith Allison")
+
+```
+
+```{r}
+
+```
+

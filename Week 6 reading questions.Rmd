@@ -1,0 +1,69 @@
+---
+title: "Week 6 questions"
+author: "Keith Allison"
+date: "10/10/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+```
+# Q1.Null Hypothesis
+
+There are two species of seed, Polyscias fulva and Psuedospndias macrocarpa, that are preyed on at an observation station. Data is collected about whether or not any seeds are taken from either species. The ecological question asked in Bolker is “Is there differential predation on the seeds of these two species?”. A baseline scenario could be that seed predation is equal for both species of seeds.
+The null hypothesis would then be: 
+
+pol_predation_rate = psd_predation_rate 
+
+or equivalently pol_predation_rate – psd_predation_rate = 0
+
+
+
+# Q2: Seed predation R-Code
+
+```{r}
+rm(list = ls())
+
+pol_n_predation = 26
+pol_n_no_predation = 184
+pol_n_total = pol_n_predation+pol_n_no_predation
+pol_predation_rate = round(pol_n_predation/pol_n_total, 3)
+
+psd_n_predation = 25
+psd_n_no_predation = 706
+psd_n_total = psd_n_predation + psd_n_no_predation
+psd_predation_rate = round(psd_n_predation/psd_n_total, 3)
+
+
+print(
+  paste0(
+    "The seed predation rate for Polyscias fulva is: ",
+    round(pol_predation_rate, digits = 3))) 
+
+print(
+  paste0(
+    "The seed predation rate for Pseudospondias microcarpa is: ",
+    round(psd_predation_rate, digits = 3)))
+```
+
+# Q3: Seed Predation Table
+
+```{r}
+
+tribble(~'species', ~'Polyscias fulva (pol)', ~'Polyscias fulva (pol)',
+        'Any Taken', pol_n_predation, psd_n_predation,
+        'None Taken', pol_n_no_predation, psd_n_no_predation,
+        'N', pol_n_total, psd_n_total,
+        'Predation rate', pol_predation_rate, psd_predation_rate)
+```
+
+# Q4: Seed Predation Ratio
+
+```{r}
+predation_prop <- round(pol_predation_rate/psd_predation_rate,3)
+predation_prop
+```
+

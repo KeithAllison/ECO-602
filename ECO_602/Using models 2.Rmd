@@ -1,0 +1,71 @@
+---
+title: "Models 2"
+author: "Keith Allison"
+date: "11/24/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+require(palmerpenguins)
+require(tidyverse)
+data(penguins)
+```
+
+
+# Q1
+
+```{r}
+boxplot(body_mass_g ~sex +  species, data = penguins, names = c("female \n Adelie", "Male \n Adelie", "female \n Chinstrap", "male \n Chinstrap", "female \n Gentoo", "male \n Gentoo"))
+```
+
+# Q2
+
+From these boxplots, I don't think that male penguins of any species are heavier than female penguins of any species, as the female Gentoo are on average larger than the Male adelie and male Chinstrap penguins. However, it seems like Males are larger than the females of the same species. 
+
+# Q3
+
+Adding sex to a model that already includes species will increase the model fit. Adding sex removes the added variance to body mass within each species caused by the grouping of male and female penguins together.
+
+
+
+# Q4
+
+```{r}
+fit_both <- lm(body_mass_g ~ sex*species, data = penguins)
+```
+
+# Q5
+
+```{r}
+summary(fit_both)
+```
+
+The base case is a female adelie penguin. 
+
+# Q6
+
+To calculate the mass of female chinstrap penguins you need the coefficients for the intercept and speciesChinstrap.
+
+# Q7
+
+```{r}
+
+#intercept + speciesChinstrap
+3368.84 + 158.37
+```
+The predicted average mass of female chinstrap penguins is 3527.21g.
+
+# Q8
+
+```{r}
+penguins %>% 
+  group_by(species, sex) %>% 
+  summarize (mean(body_mass_g), .groups = "keep")
+```
+The observed average mass of female chinstrap penguins is 3527.206g.
