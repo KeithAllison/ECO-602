@@ -9,4 +9,4 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Come to Keith's class page
+[Final Project: R Reference Guide](final_R_reference.html)
