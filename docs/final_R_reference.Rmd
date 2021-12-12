@@ -10,25 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(here)
 ```
 
-The function c() combines or concatenates its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).
-
-All of the elements must be of the same type.
-I can’t combine character and numeric types in the same call to c()
-Here’s two examples using numeric and character data types:
-
-## Create a vector of numbers:
-num_vec  = c(1, 4, 8, 9, 13)
-
-## Create a vector of characters:
-char_vec = c("a", "fish", "data is cool")
-I can show the contents of a vector by typing the name of the vector, or using the print() function.
-
-## Typing the name of the vector into the console prints the contents
-num_vec
-## [1]  1  4  8  9 13
-## The print() function accomplishes the same task:
-print(char_vec)
-## [1] "a"            "fish"         "data is cool"
 
 # R Reference Guide {.tabset .tabset-pills}
 
@@ -57,7 +38,7 @@ require(palmerpenguins)
 The here() function creates a file path based on your current working directory. It can be used to produce a file path down to the root directory to load other files.
 
 ```{r}
-ginkgo_path <- here("data/ginkgo_data_2021.csv")
+ginkgo_path <- here("Data/ginkgo_data_2021.csv")
 ginkgo_path
 ```
 
@@ -205,7 +186,7 @@ sd(penguins$bill_length_mm, na.rm = T)
 ```
 ## Graphical Data Exploration
 
-## plot()
+### plot()
 
 Creates a plot!
 ```{r}
@@ -220,7 +201,7 @@ plot(x = ginkgo$max_depth, #x-values
      ylim = c(0, 150), #range for the y-axis
      )
 ```
-## hist()
+### hist()
 
 Creates a histogram
 ```{r}
@@ -228,7 +209,7 @@ hist(penguins$flipper_length_mm, #values for the histogram
      breaks = 40 #gives the number of cells in the histogram, more = more bars
      )
 ```
-## boxplot()
+### boxplot()
 
 Creates a boxplot
 
